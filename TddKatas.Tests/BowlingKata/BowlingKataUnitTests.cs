@@ -51,6 +51,24 @@ namespace TddKatas.Tests
             Assert.Equal(20, g.scoreGame());
         }
 
+        //[Fact]
+        //public void SpareFrameWithRolls5and5and3Returns16()
+        //{
+        //    //arrange
+        //    g.roll(5);
+        //    g.roll(5);
+        //    g.roll(3);
+
+        //    int remainingRolls = 17;
+        //    int pins = 0;
+
+        //    //act
+        //    rollMany(remainingRolls, pins);
+
+        //    //assert
+        //    Assert.Equal(16, g.scoreGame());
+        //}
+
         public void rollMany(int rolls, int pins)
         {
             for (int i = 0; i < rolls; i++)
