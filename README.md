@@ -2,4 +2,4 @@
 
 Katas:
 
-1. [Bowling Kata](https://mva.microsoft.com/en-US/training-courses/testdriven-development-16458?l=pWqNU9vXC_4006218965)
+1. [Bowling Kata](http://codingdojo.org/cgi-bin/index.pl?KataBowling)
