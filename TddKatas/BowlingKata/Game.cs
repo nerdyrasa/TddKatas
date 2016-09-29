@@ -24,9 +24,21 @@ namespace TddKatas
         {
             int score = 0;
 
-            for (int i = 0; i < rolls.Length; i++)
+            int rollNum = 0;
+
+            for (int frame = 0; frame < 10; frame++)
             {
-                score += rolls[i];
+
+                if (rolls[rollNum] + rolls[rollNum + 1] == 10) // spare
+                {
+                    score += 10 + rolls[rollNum + 2];
+                }
+                else
+                {
+                    score += rolls[rollNum] + rolls[rollNum + 1];
+                }
+
+                rollNum += 2;
             }
 
             return score;
