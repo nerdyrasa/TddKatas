@@ -29,7 +29,7 @@ namespace TddKatas
             for (int frame = 0; frame < 10; frame++)
             {
 
-                if (rolls[rollNum] + rolls[rollNum + 1] == 10) // spare
+                if (isSpare(rollNum))
                 {
                     score += 10 + rolls[rollNum + 2];
                 }
@@ -42,6 +42,11 @@ namespace TddKatas
             }
 
             return score;
+        }
+
+        public bool isSpare(int rollNum)
+        {
+            return (rolls[rollNum] + rolls[rollNum + 1] == 10);
         }
     }
 }
