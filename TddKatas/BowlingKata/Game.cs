@@ -29,16 +29,23 @@ namespace TddKatas
             for (int frame = 0; frame < 10; frame++)
             {
 
+                if (rolls[rollNum] == 10)  // is strike
+                {
+                    score += rolls[rollNum] + rolls[rollNum + 1] + rolls[rollNum + 2];
+                    rollNum += 1;
+                }
                 if (isSpare(rollNum))
                 {
                     score += 10 + rolls[rollNum + 2];
+                    rollNum += 2;
                 }
                 else
                 {
                     score += rolls[rollNum] + rolls[rollNum + 1];
+                    rollNum += 2;
                 }
 
-                rollNum += 2;
+
             }
 
             return score;
