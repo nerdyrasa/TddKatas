@@ -28,13 +28,12 @@ namespace TddKatas
 
             for (int frame = 0; frame < 10; frame++)
             {
-
                 if (isStrike(rollNum))
                 {
                     score += 10 + strikeBonus(rollNum);
                     rollNum += 1;
                 }
-                if (isSpare(rollNum))
+                else if (isSpare(rollNum))
                 {
                     score += 10 + spareBonus(rollNum);
                     rollNum += 2;
@@ -44,8 +43,6 @@ namespace TddKatas
                     score += rolls[rollNum] + rolls[rollNum + 1];
                     rollNum += 2;
                 }
-
-
             }
 
             return score;
