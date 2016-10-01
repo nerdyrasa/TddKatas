@@ -70,7 +70,7 @@ namespace TddKatas.Tests
         }
 
         [Fact]
-        public void OneStrikeFrameFollowedByRoll3Roll4Returns24()
+        public void OneStrikeFollowedByRoll3Roll4Returns24()
         {
             //arrange
             g.roll(10); // When you roll a strike you are done for the frame.
@@ -86,6 +86,20 @@ namespace TddKatas.Tests
 
             //assert
             Assert.Equal(24, g.scoreGame());
+        }
+
+        [Fact]
+        public void AllStrikesReturns300()
+        {
+
+            int rolls = 12;
+            int pins = 10;
+
+            //act
+            rollMany(rolls, pins);
+
+            //assert
+            Assert.Equal(300, g.scoreGame());
         }
 
 
