@@ -29,14 +29,14 @@ namespace TddKatas
             for (int frame = 0; frame < 10; frame++)
             {
 
-                if (rolls[rollNum] == 10)  // is strike
+                if (isStrike(rollNum))
                 {
-                    score += rolls[rollNum] + rolls[rollNum + 1] + rolls[rollNum + 2];
+                    score += 10 + strikeBonus(rollNum);
                     rollNum += 1;
                 }
                 if (isSpare(rollNum))
                 {
-                    score += 10 + rolls[rollNum + 2];
+                    score += 10 + spareBonus(rollNum);
                     rollNum += 2;
                 }
                 else
@@ -54,6 +54,21 @@ namespace TddKatas
         public bool isSpare(int rollNum)
         {
             return (rolls[rollNum] + rolls[rollNum + 1] == 10);
+        }
+
+        public bool isStrike(int rollNum)
+        {
+            return (rolls[rollNum] == 10);
+        }
+
+        public int strikeBonus(int rollNum)
+        {
+            return rolls[rollNum + 1] + rolls[rollNum + 2];
+        }
+
+        public int spareBonus(int rollNum)
+        {
+            return rolls[rollNum + 2];
         }
     }
 }
