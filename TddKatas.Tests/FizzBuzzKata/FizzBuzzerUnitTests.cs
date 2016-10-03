@@ -13,6 +13,8 @@ namespace TddKatas.Tests
         [InlineData(11)]
         [InlineData(13)]
         [InlineData(14)]
+        [InlineData(17)]
+        [InlineData(19)]
         public void Buzzer_WhenDefault_ReturnsInputAsString(int input)
         {
             // Act

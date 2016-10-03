@@ -10,14 +10,16 @@ namespace TddKatas
     {
         public static string GetValue(int input)
         {
-            if (input % 15 == 0)
-                return "FizzBuzz";
-            if (input % 3 == 0)
-                return "Fizz";
-            if (input % 5 == 0)
-                return "Buzz";
+            string output = String.Empty;
 
-            return input.ToString();
+            if (input % 3 == 0)
+                output += "Fizz";
+            if (input % 5 == 0)
+                output += "Buzz";
+            if (String.IsNullOrEmpty(output))
+                output = input.ToString();
+
+            return output;
         }
     }
 }
