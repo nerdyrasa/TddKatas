@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BowlingKata\Game.cs" />
     <Compile Include="FizzBuzzKata\FizzBuzzer.cs" />
+    <Compile Include="GameOfLifeKata\LifeRules.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
