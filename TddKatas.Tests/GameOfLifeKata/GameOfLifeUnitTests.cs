@@ -54,5 +54,31 @@ namespace TddKatas.Tests
             Assert.Equal(CellState.Alive, newState);
 
         }
+
+        [Theory]
+        [InlineData(0)]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void DeadCell_WithFewerThan3LiveNeighbors_StaysDead(int liveNeighbors)
+        {
+            var currentState = CellState.Dead;
+            CellState newState = LifeRules.GetNewState(currentState, liveNeighbors);
+            Assert.Equal(CellState.Dead, newState);
+        }
+
+        [Theory]
+        [InlineData(4)]
+        [InlineData(5)]
+        [InlineData(6)]
+        [InlineData(7)]
+        [InlineData(8)]
+        public void DeadCell_WithMoreThan3LiveNeighbors_StaysDead(int liveNeighbors)
+        {
+            var currentState = CellState.Dead;
+            CellState newState = LifeRules.GetNewState(currentState, liveNeighbors);
+            Assert.Equal(CellState.Dead, newState);
+        }
+
+
     }
 }
