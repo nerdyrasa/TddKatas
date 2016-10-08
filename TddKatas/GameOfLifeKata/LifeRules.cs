@@ -16,6 +16,9 @@ namespace TddKatas
     {
         public static CellState GetNewState(CellState currentState, int liveNeighbors)
         {
+            if (!Enum.IsDefined(typeof(CellState), currentState))
+                throw new ArgumentOutOfRangeException(nameof(currentState));
+
             switch (currentState)
             {
                 case CellState.Alive:

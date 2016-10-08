@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace TddKatas.Tests
 {
@@ -79,6 +80,18 @@ namespace TddKatas.Tests
             Assert.Equal(CellState.Dead, newState);
         }
 
+        //https://www.richard-banks.org/2015/07/stop-using-assertthrows-in-your-bdd.html
+
+        [Fact]
+        public void CurrentState_When2_ThrowsArgumentException()
+        {
+            var currentState = (CellState)2;
+            int liveNeighbors = 2;
+
+            var exception = Record.Exception(() => LifeRules.GetNewState(currentState, liveNeighbors));
+            Assert.NotNull(exception);
+            Assert.IsType<ArgumentOutOfRangeException>(exception);
+        }
 
     }
 }
