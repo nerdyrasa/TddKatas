@@ -82,6 +82,10 @@ namespace TddKatas.Tests
 
         //https://www.richard-banks.org/2015/07/stop-using-assertthrows-in-your-bdd.html
 
+
+        // This test case expects an argument out of range exception for the currentState parameter
+        // How do I know the right argument out of range exception was thrown?
+
         [Fact]
         public void CurrentState_When2_ThrowsArgumentException()
         {
@@ -93,5 +97,18 @@ namespace TddKatas.Tests
             Assert.IsType<ArgumentOutOfRangeException>(exception);
         }
 
+        // This test case expects an argument out of range exception for the liveNeighbors argument
+        // How do I know the right argument out of range exception was thrown?
+
+        [Fact]
+        public void LiveNeighbors_MoreThan8_ThrowsArgumentException()
+        {
+            var currentState = CellState.Alive;
+            int liveNeighbors = 9;
+
+            var exception = Record.Exception(() => LifeRules.GetNewState(currentState, liveNeighbors));
+            Assert.NotNull(exception);
+            Assert.IsType<ArgumentOutOfRangeException>(exception);
+        }
     }
 }

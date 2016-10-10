@@ -18,6 +18,8 @@ namespace TddKatas
         {
             if (!Enum.IsDefined(typeof(CellState), currentState))
                 throw new ArgumentOutOfRangeException(nameof(currentState));
+            if (liveNeighbors > 8)
+                throw new ArgumentOutOfRangeException(nameof(liveNeighbors));
 
             switch (currentState)
             {
