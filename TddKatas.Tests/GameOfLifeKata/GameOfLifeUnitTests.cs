@@ -1,6 +1,8 @@
 ﻿using System;
 using Xunit;
 
+// When a bug pops up in your code, first thing to do is to write a failing test for it.
+
 namespace TddKatas.Tests
 {
     public class GameOfLifeUnitTests
@@ -86,6 +88,8 @@ namespace TddKatas.Tests
         // This test case expects an argument out of range exception for the currentState parameter
         // How do I know the right argument out of range exception was thrown?
 
+        // xUnit does not have an ExpectedException Attribute like NUnit 2.2 and MSTest
+
         [Fact]
         public void CurrentState_When2_ThrowsArgumentException()
         {
@@ -99,16 +103,41 @@ namespace TddKatas.Tests
 
         // This test case expects an argument out of range exception for the liveNeighbors argument
         // How do I know the right argument out of range exception was thrown?
+        // The following test explicitly tests that the right argument out fo range 
+        // exception is thrown.
 
         [Fact]
         public void LiveNeighbors_MoreThan8_ThrowsArgumentException()
         {
             var currentState = CellState.Alive;
             int liveNeighbors = 9;
+            var paramName = "liveNeighbors";
 
-            var exception = Record.Exception(() => LifeRules.GetNewState(currentState, liveNeighbors));
-            Assert.NotNull(exception);
-            Assert.IsType<ArgumentOutOfRangeException>(exception);
+            try
+            {
+                LifeRules.GetNewState(currentState, liveNeighbors);
+
+                // This is the xUnit alternative to nUnit's Assert.Fail
+                // http://xunit.github.io/docs/comparisons.html#attributes
+
+                Assert.True(false, "Exception was not thrown.");
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Assert.Equal(paramName, ex.ParamName);
+            }
+        }
+
+        [Fact]
+        public void LiveNeighbors_LessThan0_ThrowsArgumentException()
+        {
+            var currentState = CellState.Alive;
+            int liveNeighbors = -1;
+            var paramName = "liveNeighbors";
+
+            Assert.Throws<ArgumentOutOfRangeException>(
+                paramName,
+                () => LifeRules.GetNewState(currentState, liveNeighbors));
         }
     }
 }
